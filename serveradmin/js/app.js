@@ -21,7 +21,7 @@ $( document ).ready(function() {
 			    {
 				    html += '<tr><td><p class="text-left">'+servers.servers[i].servername+'</p>'+ 
                     '</td><td><i target="_blank" onclick="location.href=\'ssh://'+servers.servers[i].mgt_ip+':'+servers.servers[i].ssh_port+'\'" class="fa fa-terminal fa-2x" aria-hidden="true"></i></a></td>' +
-                    '</td><td><i onclick="location.href=\'http://'+servers.servers[i].mgt_ip+':'+servers.servers[i].web_port+'\'" class="fa fa-chrome fa-2x" aria-hidden="true"></i></td>' +
+                    '</td><td><i onclick="window.open(\'http://'+servers.servers[i].mgt_ip+':'+servers.servers[i].web_port+'\')" class="fa fa-chrome fa-2x" aria-hidden="true"></i></td>' +
                     '</td><td><i onclick="location.href=\'https://'+servers.servers[i].ilo_ip+'\'" class="fa fa-chrome fa-2x" aria-hidden="true"></i></td>' +
                     '</td><td>' + servers.servers[i].environment + '</td>' +
                     '</td><td>' + servers.servers[i].role + '</td>' +
