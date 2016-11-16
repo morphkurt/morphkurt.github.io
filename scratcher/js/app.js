@@ -170,8 +170,8 @@ function handleFileSelect(evt) {
           for (i = 0; i < config.assets.length; i++) { 
       	   html += '<tr><td><p class="text-left">'+config.assets[i].description+'</p></td>' +
       	   '<td><p class="text-left">'+config.assets[i].embed_code+'</p></td>'+
-           '<td><button onclick="ImplementChange(\''+config.assets[i].embed_code+'\');" type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></td>'+
-           '<td><button onclick="infoclick(\''+config.assets[i].embed_code+'\');" type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></td>'+
+           '<td><button onclick="ImplementChange(\''+config.assets[i].embed_code+'\');" type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></td>'+
+           '<td><button onclick="infoclick(\''+config.assets[i].embed_code+'\');" type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button></td>'+
       	   '</tr>'
      	  }
      	    $('#resultstable').append(html);
