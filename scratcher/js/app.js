@@ -214,7 +214,8 @@ function infoclick(embedcode){
           var html;
           var s = searchEmbedCode(embedcode,config.assets)
   html += '<tr><td><p class="text-left">embedcode</p></td><td>'+json.embed_code+'</td>'+
-  '<tr><td><p class="text-left">Description</p></td><td>'+json.description+'</td>'+
+    '<tr><td><p class="text-left">Title</p></td><td>'+json.title+'</td>'+
+    '<tr><td><p class="text-left">Description</p></td><td>'+json.description+'</td>'+
     '<tr><td><p class="text-left">ipad url</p></td><td>'+json.stream_urls.ipad+'</td>'+
     '<tr><td><p class="text-left">iphone url</p></td><td>'+json.stream_urls.iphone+'</td>'+
     '<tr><td><p class="text-left">flash url</p></td><td>'+json.stream_urls.flash+'</td>'+
