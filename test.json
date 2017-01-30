@@ -2,6 +2,9 @@
 {"name":"mediacloud","size":3938,"imports":["msh_exit","nfvi","he2.5"]},
 {"name":"msh_exit","size":3812,"imports":["nfvi"]},
 {"name":"nfvi","size":16540,"imports":["mediacloud"]},
-{"name":"he2.5","size":16540,"imports":["hevc"]},
-{"name":"hevc","size":16540,"imports":["hevc"]}
+{"name":"he25","size":16540,"imports":["hevc"]},
+{"name":"hevc","size":16540,"imports":["he25"]},
+{"name":"bpm_stability","size":16540,"imports":["telstra_tv"]},
+{"name":"bpm_salesforce","size":16540,"imports":["telstra_tv"]},
+{"name":"telstra_tv","size":16540,"imports":["bpm_stability","bpm_salesforce","netball"]}
 ]
