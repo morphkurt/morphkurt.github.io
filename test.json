@@ -3,4 +3,5 @@
 {"name":"msh_exit","size":3812,"imports":["nfvi"]},
 {"name":"nfvi","size":16540,"imports":["mediacloud"]},
 {"name":"he2.5","size":16540,"imports":["hevc"]},
+{"name":"hevc","size":16540,"imports":["hevc"]},
 ]
