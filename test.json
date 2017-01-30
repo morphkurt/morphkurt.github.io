@@ -1,5 +1,5 @@
 [
-{"name":"mediacloud","size":3938,"imports":["nfvi"]},
-{"name":"nfvi","size":16540,"imports":["network2020"]},
-{"name":"network2020","size":16540,"imports":["mediacloud"]}
+{"name":"flare.analytics.cluster.AgglomerativeCluster","size":3938,"imports":["flare.animate.Transitioner"]},
+{"name":"flare.animate.Transitioner","size":3812,"imports":["flare.vis.Visualization"]},
+{"name":"flare.vis.Visualization","size":16540,"imports":["flare.analytics.cluster.AgglomerativeCluster"]}
 ]
