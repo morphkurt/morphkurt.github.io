@@ -2,5 +2,5 @@
 {"name":"mediacloud","size":3938,"imports":["nfvi"]},
 {"name":"msh exit","size":3812,"imports":["medicloud"]},
 {"name":"nfvi","size":16540,"imports":["network2020"]},
-{"name":"network2020","size":16540,"imports":[]}
+{"name":"network2020","size":16540,"imports":["mediacloud"]}
 ]
