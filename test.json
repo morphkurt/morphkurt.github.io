@@ -6,5 +6,5 @@
 {"name":"hevc","size":16540,"imports":["he25"]},
 {"name":"bpm_stability","size":16540,"imports":["telstra_tv"]},
 {"name":"bpm_salesforce","size":16540,"imports":["telstra_tv"]},
-{"name":"telstra_tv","size":16540,"imports":["bpm_salesforce"]}
+{"name":"telstra_tv","size":16540,"imports":["bpm_salesforce","hevc","he25"]}
 ]
