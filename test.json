@@ -1,5 +1,6 @@
 [
-{"name":"mediacloud","size":3938,"imports":["msh_exit","nfvi"]},
+{"name":"mediacloud","size":3938,"imports":["msh_exit","nfvi","he2.5"]},
 {"name":"msh_exit","size":3812,"imports":["nfvi"]},
-{"name":"nfvi","size":16540,"imports":["mediacloud"]}
+{"name":"nfvi","size":16540,"imports":["mediacloud"]},
+{"name":"he2.5","size":16540,"imports":["hevc"]},
 ]
