@@ -10,7 +10,7 @@
 {"name":"aperi_virtulisation","size":3938,"imports":["gmn_expansion"]},
 {"name":"lte-c","size":3938,"imports":["dvn"]},
 {"name":"remote_production","size":3938,"imports":["dvn"]},
-{"name":"sca_playout","size":3938,"imports":["dvn"]},
+{"name":"sca_playout","size":3938,"imports":["dvn","medicloud"]},
 {"name":"industry_playout","size":3938,"imports":["dvn","sca_playout"]},
 {"name":"n2020","size":3938,"imports":["n2020_architecture","n2020_orchestration","n2020_datamodel","n2020_api","n2020_nfvi"]},
 {"name":"n2020_architecture","size":3938,"imports":["n2020"]},
