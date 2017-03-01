@@ -4,5 +4,5 @@
 
 ## Create the Mininet VM
 
-<Insert the Diagram here VM1>
+![Oracle VM VirtualBox Manager](https://morphkurt.github.io/sdn/Image1.PNG)
 
