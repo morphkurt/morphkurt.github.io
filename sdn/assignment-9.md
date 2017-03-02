@@ -222,5 +222,16 @@ mininet> h3 ping 10.0.0.1
 
 ![Testintg the VXLAN](https://morphkurt.github.io/sdn/Image2.PNG)
 
-You will the succesfull pings
+You will see the succesfull pings
+
+### Sample tcpdump traffic
+
+Login to the router and run the following command
+
+```bash
+sudo tcpdump -ani any not port 22
+```
+
+![Testintg the VXLAN](https://morphkurt.github.io/sdn/Image3.PNG)
+
 
