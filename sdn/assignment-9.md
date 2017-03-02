@@ -206,5 +206,7 @@ On server 2
 mininet> h3 ping 10.0.0.1
 ```
 
+![Testintg the VXLAN](https://morphkurt.github.io/sdn/Image2.PNG)
+
 You will the succesfull pings
 
