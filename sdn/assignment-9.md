@@ -82,7 +82,7 @@ def emptyNet():
       net = Mininet( controller=None )
     info( '*** Adding controller\n' )
     info( '*** Adding hosts\n' )
-    h1 = net.addHost( 'h1', ip='10.0.0.1' )
+    h1 = net.addHost( 'h1', ip='10.0.0.1', mac='00:00:00:00:00:01' )
     info( '*** Adding switch\n' )
     s1 = net.addSwitch( 's1' )
     info( '*** Creating links\n' )
@@ -115,7 +115,7 @@ def emptyNet():
       net = Mininet( controller=None )
     info( '*** Adding controller\n' )
     info( '*** Adding hosts\n' )
-    h3 = net.addHost( 'h3', ip='10.0.0.2' )
+    h3 = net.addHost( 'h3', ip='10.0.0.2',mac='00:00:00:00:00:02' )
     info( '*** Adding switch\n' )
     s2 = net.addSwitch( 's2' )
     info( '*** Creating links\n' )
@@ -145,4 +145,66 @@ On Virtual server 1 start the mininet with following command
 ```bash
 sudo python vxlan2.py
 ```
+
+### Create the VTEP Tunnel
+
+On server 1
+
+```bash
+sh ovs-vsctl add-port s1 vtep -- set interface vtep type=vxlan option:remote_ip=210.10.10.11 option:key=flow ofport_request=10 
+```
+
+On server 2
+
+```bash
+sh ovs-vsctl add-port s1 vtep -- set interface vtep type=vxlan option:remote_ip=210.20.20.11 option:key=flow ofport_request=10 
+```
+
+### Create the Flow Table
+
+Create a flows.txt file with following content on each server
+
+On the server 1
+```bash
+table=0,in_port=1,actions=set_field:100->tun_id,resubmit(,1)
+table=0,in_port=2,actions=set_field:200->tun_id,resubmit(,1)
+table=0,actions=resubmit(,1)
+
+table=1,tun_id=100,dl_dst=00:00:00:00:00:01,actions=output:1 table=1,tun_id=200,dl_dst=00:00:00:00:00:01,actions=output:2 table=1,tun_id=100,dl_dst=00:00:00:00:00:02,actions=output:10 table=1,tun_id=200,dl_dst=00:00:00:00:00:02,actions=output:10 table=1,tun_id=100,arp,nw_dst=10.0.0.1,actions=output:1 table=1,tun_id=200,arp,nw_dst=10.0.0.1,actions=output:2 table=1,tun_id=100,arp,nw_dst=10.0.0.3,actions=output:10 table=1,tun_id=200,arp,nw_dst=10.0.0.3,actions=output:10 
+table=1,priority=100,actions=drop 
+```
+
+On the server 2
+```bash
+table=0,in_port=1,actions=set_field:100->tun_id,resubmit(,1)
+table=0,in_port=2,actions=set_field:200->tun_id,resubmit(,1)
+table=0,actions=resubmit(,1)
+
+table=1,tun_id=100,dl_dst=00:00:00:00:00:01,actions=output:1 table=1,tun_id=200,dl_dst=00:00:00:00:00:01,actions=output:2 table=1,tun_id=100,dl_dst=00:00:00:00:00:02,actions=output:10 table=1,tun_id=200,dl_dst=00:00:00:00:00:02,actions=output:10 table=1,tun_id=100,arp,nw_dst=10.0.0.1,actions=output:1 table=1,tun_id=200,arp,nw_dst=10.0.0.1,actions=output:2 table=1,tun_id=100,arp,nw_dst=10.0.0.3,actions=output:10 table=1,tun_id=200,arp,nw_dst=10.0.0.3,actions=output:10 
+table=1,priority=100,actions=drop 
+```
+
+### Load the flow table
+
+Run the following command on the both servers
+
+```bash
+sh ovs-ofctl add-flows s1 flows.txt
+```
+
+### Test the VXLAN 
+
+On server 1
+
+```bash
+mininet> h1 ping 10.0.0.3
+```
+
+On server 2
+
+```bash
+mininet> h3 ping 10.0.0.1
+```
+
+You will the succesfull pings
 
