@@ -27,6 +27,9 @@ sudo su
 echo "mininet-vm2 > /etc/hostname"
 ```
 
+You will realise the server will complain about the DNS. Fix that with adding an entry on `/etc/hosts`
+
+
 ### Configure the secondary interface
 
 ```bash
@@ -66,6 +69,7 @@ The following python script was used to create the Mininet Topology
 
 ### Virtual Server 1
 
+Create vxlan1.py file with following content
 
 ```python
 #!/usr/bin/python
@@ -98,6 +102,7 @@ if __name__ == '__main__':
 
 ### Virtual Server 2
 
+Create vxlan2.py file with following content
 
 ```python
 #!/usr/bin/python
@@ -125,5 +130,19 @@ def emptyNet():
 if __name__ == '__main__':
   setLogLevel( 'info' )
   emptyNet()
+```
+
+### Start the mininet
+
+On Virtual server 1 start the mininet with following command
+
+```bash
+sudo python vxlan1.py
+```
+
+On Virtual server 1 start the mininet with following command
+
+```bash
+sudo python vxlan2.py
 ```
 
