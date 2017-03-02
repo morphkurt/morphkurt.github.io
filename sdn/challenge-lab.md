@@ -163,7 +163,7 @@ sh ovs-vsctl add-port s1 vtep -- set interface vtep type=vxlan option:remote_ip=
 On server 2
 
 ```bash
-sh ovs-vsctl add-port s1 vtep -- set interface vtep type=vxlan option:remote_ip=210.20.20.11 option:key=flow ofport_request=10 
+sh ovs-vsctl add-port s2 vtep -- set interface vtep type=vxlan option:remote_ip=210.20.20.11 option:key=flow ofport_request=10 
 ```
 
 ### Create the Flow Table
