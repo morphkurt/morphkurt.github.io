@@ -7,7 +7,7 @@ damitha.n.gunawardena@team.telstra.com
 
 The following is the topology
 
-![Topology](https://morphkurt.github.io/sdn/Drawing1.PNG)
+![Topology](https://morphkurt.github.io/sdn/Drawing1.png)
 
 # Setting up the Mininet VMs
 
