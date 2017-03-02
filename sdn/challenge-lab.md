@@ -3,6 +3,10 @@
 Damitha Gunawardena
 damitha.n.gunawardena@team.telstra.com
 
+# Topology
+
+![Topology](https://morphkurt.github.io/sdn/Image1.PNG)
+
 # Setting up the Mininet VMs
 
 ## Create the Mininet VM
