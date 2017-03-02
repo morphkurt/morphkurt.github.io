@@ -232,6 +232,6 @@ Login to the router and run the following command
 sudo tcpdump -ani any not port 22
 ```
 
-![Testintg the VXLAN](https://morphkurt.github.io/sdn/Image3.PNG)
+![Testing the VXLAN](https://morphkurt.github.io/sdn/Image3.PNG)
 
 
