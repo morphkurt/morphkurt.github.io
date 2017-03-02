@@ -208,9 +208,18 @@ table=1,priority=100,actions=drop
 
 Run the following command on the both servers
 
+server 1
+
 ```bash
 sh ovs-ofctl add-flows s1 flows.txt
 ```
+
+server 2
+
+```bash
+sh ovs-ofctl add-flows s2 flows.txt
+```
+
 
 ### Test the VXLAN 
 
