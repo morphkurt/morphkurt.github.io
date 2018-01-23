@@ -43,7 +43,27 @@
       {
         "name": "Prod fMP4 Smooth - 1024kbps 576p HEVC - HE2.5",
         "uri": "http://live3.syd2.vhe.telstra.com/ss/afl/afl_7vic_h264.isml/Manifest"
+      },
+      
+      {
+        "name": “AFL TV Prod HLS - 1500kbps 576p H264 - HE2.5",
+        "uri": "http://live3.syd2.vhe.telstra.com/hls/afl/afl_afltv_h264/root-index.m3u8"
+      },
+      {
+        "name": “AFL TV Prod TS HLS - 1024kbps 576p HEVC - HE2.5",
+        "uri": "http://live3.syd2.vhe.telstra.com/hls/afl/afl_afltv_hevc/index.m3u8"
+      },
+      {
+        "name": “AFL TV Prod fMP4 HLS - 1024kbps 576p HEVC - HE2.5",
+        "uri": "http://live3.syd2.vhe.telstra.com/hls/afl/afl_afltv_hevc_fmp4/root-index.m3u8"
+      },
+      {
+        "name": “AFL TV Prod Dash - 1020kbps 576p HEVC - HE2.5",
+        "uri": "http://live3.syd2.vhe.telstra.com/dash/afl/afl_afltv_hevc/manifest.mpd"
       }
+      
+      
+      
     ]
   }
 ]
