@@ -59,6 +59,12 @@
 			{
 				"name": "Prod fMP4 Smooth - 1024kbps 576p HEVC - HE2.5",
 				"uri": "http://live3.syd2.vhe.telstra.com/ss/afl/afl_7vic_h264.isml/Manifest"
+			},
+			{	
+				"name": "Model fMP4 AES test HE2.5",
+				"uri": "http://203.42.44.64/hls/fmp4/index.m3u8"
+				
+				
 			}
 
 
