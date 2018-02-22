@@ -5,7 +5,7 @@
 		"samples": [
 			{
 				"name": "403 Testing",
-				"uri": "http://afllivehlsjit2347.ngcdn.telstra.com/hls/afl/afl_afltv_h264/root-index.m3u8?IS=0&ET=1519260215&CIP=1.1.1.1&KO=1&KN=7&US=570790277cf864df576c74b4f558fdbb"
+				"uri": "http://afllivehlsjit2347.ngcdn.telstra.com/hls/afl/afl_afltv_h264/01.m3u8?IS=0&ET=1519260477&CIP=1.1.1.1&KO=1&KN=7&US=97b75b9034952962db08f88ae45c19ea"
 			},
       			{
 				"name": "Netball Prod fmp4 HLS - 3500 kbps 1080p HEVC - HE2 .5 ",
