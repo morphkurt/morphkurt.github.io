@@ -62,23 +62,23 @@
 				"uri": "http://live1.model.vhe.telstra.com/out/u/12855_4.m3u8"
 			},
 			{
-				"name": "1800kbps 720p - LTE-B",
+				"name": "1800kbps 720p",
 				"uri": "http://live1.model.vhe.telstra.com/out/u/12855_5.m3u8"
 			},
 			{
-				"name": "1200kbps 576p",
+				"name": "1200kbps 720p",
 				"uri": "http://live1.model.vhe.telstra.com/out/u/12855_6.m3u8"
 			},
 			{
-				"name": "800kbps 576p",
+				"name": "800kbps 720p",
 				"uri": "http://live1.model.vhe.telstra.com/out/u/12855_7.m3u8"
 			},
 			{
-				"name": "600kbps 480p",
+				"name": "600kbps 720p",
 				"uri": "http://live1.model.vhe.telstra.com/out/u/12855_8.m3u8"
 			},
 			{
-				"name": "400kbps 480p",
+				"name": "400kbps 576p",
 				"uri": "http://live1.model.vhe.telstra.com/out/u/12855_9.m3u8"
 			}
 		]
