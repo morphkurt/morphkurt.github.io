@@ -83,5 +83,89 @@
 			}
 		]
 		
+	},
+	{
+		"name": "Rogue One - HEVC",
+		"samples": [
+			{
+				"name": "Adaptive",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/wdzeX75C1QNLATMXyuXHPQ.m3u8"
+			},
+      			{
+				"name": "3400kbps 1080p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12849_1.m3u8"
+			},
+			{
+				"name": "3000kbps 1080p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12849_2.m3u8"
+			},
+			{
+				"name": "2400kbps 720p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12849_3.m3u8"
+			},
+			{
+				"name": "1800kbps 720p - LTE-B",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12849_4.m3u8"
+			},
+			{
+				"name": "1200kbps 576p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12849_5.m3u8"
+			},
+			{
+				"name": "600kbps 576p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12849_6.m3u8"
+			},
+			{
+				"name": "300kbps 480p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12849_7.m3u8"
+			}
+		]
+		
+	},
+	{
+		"name": "Rogue One- H264",
+		"samples": [
+			{
+				"name": "Adaptive",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/o19-GOpNjXA0B4G66Y_FCg.m3u8"
+			},
+			{
+				"name": "5500kbps 1080p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12846_1.m3u8"
+			},
+      			{
+				"name": "3300kbps 1080p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12846_2.m3u8"
+			},
+			{
+				"name": "3000kbps 1080p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12846_3.m3u8"
+			},
+			{
+				"name": "2400kbps 720p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12846_4.m3u8"
+			},
+			{
+				"name": "1800kbps 720p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12846_5.m3u8"
+			},
+			{
+				"name": "1200kbps 720p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12846_6.m3u8"
+			},
+			{
+				"name": "800kbps 720p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12846_7.m3u8"
+			},
+			{
+				"name": "600kbps 720p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12846_8.m3u8"
+			},
+			{
+				"name": "400kbps 576p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12846_9.m3u8"
+			}
+		]
+		
 	}
 ]
