@@ -254,5 +254,53 @@
 			
 		]
 		
+	},
+	{
+		"name": "AFL - H264",
+		"samples": [
+			{
+				"name": "Adaptive",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/fQ0mPPBNvge9rb2_ZGrDoA.m3u8"
+			},
+			{
+				"name": "5500kbps 1080p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12972_1.m3u8"
+			},
+      			{
+				"name": "3300kbps 1080p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12972_2.m3u8"
+			},
+			{
+				"name": "3000kbps 1080p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12972_3.m3u8"
+			},
+			{
+				"name": "2400kbps 720p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12972_4.m3u8"
+			},
+			{
+				"name": "1800kbps 720p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12972_5.m3u8"
+			},
+			{
+				"name": "1200kbps 720p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12972_6.m3u8"
+			},
+			{
+				"name": "800kbps 720p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12972_7.m3u8"
+			},
+			{
+				"name": "600kbps 720p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12972_8.m3u8"
+			},
+			{
+				"name": "400kbps 576p",
+				"uri": "http://live1.model.vhe.telstra.com/out/u/12972_9.m3u8"
+				
+			}
+			
+		]
+		
 	}
 ]
