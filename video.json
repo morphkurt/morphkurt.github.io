@@ -256,7 +256,7 @@
 		
 	},
 	{
-		"name": "AFL - H264",
+		"name": "AFL - HEVC",
 		"samples": [
 			{
 				"name": "Adaptive",
