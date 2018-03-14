@@ -12,7 +12,7 @@
 				"uri": "http://live1.model.vhe.telstra.com/out/u/12858_1.m3u8"
 			},
 			{
-				"name": "3400kbps",
+				"name": "3000kbps",
 				"uri": "http://live1.model.vhe.telstra.com/out/u/12858_2.m3u8"
 			},
 		]
