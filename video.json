@@ -25,7 +25,7 @@
 			},
 			{
 				"name": "Production AFL HEVC 600k 360p",
-				"uri": "http://live3.syd2.vhe.telstra.com/hls/afl/afl_afltv_h264/03.m3u8"
+				"uri": "http://live3.syd2.vhe.telstra.com/hls/afl_hevc2/afl_afltv_hevc_fmp4/03.m3u8"
 			}
 		]
 		
