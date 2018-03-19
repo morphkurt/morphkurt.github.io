@@ -176,6 +176,8 @@ function handleFileSelect(evt) {
      	  }
    */
 	$("#ooyala-api-key").val(config.ooyala_api_key);
+	$("#ooyala-api-secret").val(config.ooyala_api_secret);
+		
 	
      	    $('#resultstable').append(html);
         };
