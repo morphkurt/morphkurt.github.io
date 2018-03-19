@@ -175,7 +175,7 @@ function handleFileSelect(evt) {
       	   '</tr>'
      	  }
    */
-	$("#ooyala-api-key") = config.ooyala_api_key;
+	$("#ooyala-api-key").val(config.ooyala_api_key);
 	
      	    $('#resultstable').append(html);
         };
