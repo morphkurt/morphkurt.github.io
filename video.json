@@ -5,7 +5,7 @@
 		"samples": [
 			{
 				"name": "LTE-B HEVC 1500k 720p",
-				"uri": "https://ltebtelstratvdashlive498.ngcdn.telstra.com/lte/sc3unicast/manifest.mpd"
+				"uri": "https://aflltebsdashlive844.ngcdn.telstra.com/lteunicast/sc3unicast/manifest.mpd"
 			},
 			{
 				"name": "Production AFL HEVC 1000k 576p",
