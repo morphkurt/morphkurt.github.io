@@ -333,6 +333,10 @@
 			{
 				"name": "NRL - Origin",
 				"uri": "http://live4.syd2.vhe.telstra.com/hls/nrl_hevc/nrl_mch1_hevc_fmp4/root-index.m3u8"
+			},
+			{
+				"name": "AFL - Origin",
+				"uri": "http://live3.syd2.vhe.telstra.com/hls/afl_hevc/afl_afltv_hevc_fmp4/root-index.m3u8"
 			}
 		]
 		
