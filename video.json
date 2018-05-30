@@ -331,8 +331,8 @@
 				"uri": "http://nrllivehlsjit2347.ngcdn.telstra.com/hls/nrl_hevc/nrl_mch1_hevc_fmp4/root-index.m3u8?SIGV=2&IS=0&ET=1527778131&CIP=1.2.3.4&KO=1&KN=7&US=9ffb043b19c7bf4ca8e4c037bfb9f0f99491f8a5"
 			},
 			{
-				"name": "Not working",
-				"uri": "http://vnx1.ngcdn01.telstra.com/skynews/indexerr.m3u8"
+				"name": "NRL - Origin",
+				"uri": "http://live4.syd2.vhe.telstra.com/hls/nrl_hevc/nrl_mch1_hevc_fmp4/root-index.m3u8"
 			}
 		]
 		
