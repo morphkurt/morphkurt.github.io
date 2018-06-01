@@ -363,9 +363,9 @@
         }
 
         switch (message.action) {
-          case "setCCLanguage":
-            setClosedCaptionsLanguage(message.data);
-            break;
+        //  case "setCCLanguage":
+        //    setClosedCaptionsLanguage(message.data);
+        //    break;
           case "getstatus":
             // if status is requested, return the state, playhead, and embedcode
             var status = {
@@ -539,6 +539,7 @@
                 break;
               case OO.EVENTS.AUTHORIZATION_FETCHED:
                 var stream = arguments[1].streams[0];
+                
                 if (stream) {
                   if (stream.is_live_stream) {
                     printDebugMessage("Live stream:", arguments[1].streams[0].delivery_type);
