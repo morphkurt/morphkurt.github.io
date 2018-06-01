@@ -480,6 +480,10 @@
                   // remove track element for closed captions, if any - a new one will be created if needed
                   $("#cc_track").remove();
                 }
+                if ($("#track")) {
+                  // remove track element for closed captions, if any - a new one will be created if needed
+                  $("#track").remove();
+                }
                 screenController.showScreen(loadingScreen);
                 break;
               case OO.EVENTS.PLAYBACK_READY:
@@ -670,7 +674,7 @@
           player.mb.publish(OO.EVENTS.CLOSED_CAPTIONS_INFO_AVAILABLE, { lang : 'live', value : 'Live Closed Captions' });
         }
       } else {
-        /*
+        
         if ($("#cc_track")) {
           $("#cc_track").remove();
         }
@@ -692,7 +696,7 @@
           });
           
         }
-        */
+        
       }
       ccLanguage = language;
     }
