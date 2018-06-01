@@ -363,9 +363,9 @@
         }
 
         switch (message.action) {
-        //  case "setCCLanguage":
-        //    setClosedCaptionsLanguage(message.data);
-        //    break;
+          case "setCCLanguage":
+            setClosedCaptionsLanguage(message.data);
+          break;
           case "getstatus":
             // if status is requested, return the state, playhead, and embedcode
             var status = {
@@ -495,7 +495,7 @@
                 break;
               case OO.EVENTS.STREAM_PLAYING:
                 // Show the player screen
-                screenController.showScreen(playerScreen, "setClosedCaptionsLanguage(ccLanguage)");
+               // screenController.showScreen(playerScreen, "setClosedCaptionsLanguage(ccLanguage)");
                 // Fade out the title, labels, and the scrubber after a specified delay
                 controls.fadeOutControls(controls.getDelayInMillis());
                 // Replace pause icon by play icon and fade it out after a specified delay
@@ -670,6 +670,7 @@
           player.mb.publish(OO.EVENTS.CLOSED_CAPTIONS_INFO_AVAILABLE, { lang : 'live', value : 'Live Closed Captions' });
         }
       } else {
+        /*
         if ($("#cc_track")) {
           $("#cc_track").remove();
         }
@@ -689,7 +690,9 @@
               }
             }
           });
+          
         }
+        */
       }
       ccLanguage = language;
     }
