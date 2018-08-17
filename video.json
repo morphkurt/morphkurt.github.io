@@ -8,6 +8,10 @@
 				"uri": "http://web.syd.vhe.telstra.com/lteunicast/sc3unicast/manifest.mpd"
 			},
 			{
+				"name": "NRL 1500k 720p",
+				"uri": "http://nrllivehlsjit2347.ngcdn.telstra.com/hls/nrl/nrl_mch1_h264/root-index.m3u8?SIGV=2&IS=0&ET=1534587857&CIP=1.2.3.4&KO=1&KN=7&US=efe26cc9b83c016934d4f1348c90026e0e04f283"
+			},
+			{
 				"name": "Production AFL HEVC 1000k 576p",
 				"uri": "http://live3.syd2.vhe.telstra.com/hls/afl_hevc/afl_footy_hevc_fmp4/05.m3u8"
 			},
