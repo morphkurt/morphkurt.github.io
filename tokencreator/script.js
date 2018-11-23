@@ -9,7 +9,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var ref = firebase.database().ref();                           
-ref.on("value", function(snapshot){
-    output.innerHTML = JSON.stringify(snapshot.val(), null, 2);
-});
+// getting the text value from the database
+var bigOne = document.getElementById('bigOne');
+var dbRef = firebase.database().ref().child('text');
+dbRef.on('value', snap => bigOne.innerText = snap.val());
