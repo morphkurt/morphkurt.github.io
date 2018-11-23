@@ -1,106 +1,12 @@
 <html>
-<head>
-  <title>Token Creator</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="js/sha256.js"></script>
-  <script src="js/app.js"></script>
-<script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-</head>
-<body>
-  <div class="container">
-  <div class="row">
-  <div class="col-sm-12">
-      <h2>Token Creator</h2>
-  </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-10">
- 
-     <div class="form-group">
-    <label for="exampleFormControlInput1">Event Name</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="AFLINT01">
-  </div>
-  <div class="form-group">
-       <label for="exampleFormControlInput1">Start Time</label>
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
- <div class="form-group">
-       <label for="exampleFormControlInput1">End Time</label>
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-  <div class="form-group">
-  
-    
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-        
-
-
-    </div>
-     <div class="col-sm-2">
-      <div class="input-group">
-      <input id="ooyala-api-key" type="text" class="form-control" placeholder="Secret Key">
-      <!--input id="ooyala-api-secret" type="text" class="form-control" placeholder="Ooyala API Secret"-->
-      <label class="btn btn-default btn-file">
-      Upload Config Json <input type="file" id="files" multiple name="files[]" style="display: none;">
-    </label>
-    <button type="button" class="btn btn-default" onclick="Sync();">Sync from Ooyala</button>
-    <button type="button" class="btn btn-default" onclick="Download();">Backup</button>
-    </div><!-- /input-group -->
-    </div>
-  </div>
-  <div class="row">
-    
-     <div class="col-sm-12">
-      <pre id="output">
-      </pre>
-    </div>
-    
-  </div>
-   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 id="modalheader" class="modal-title"></h3>
-        </div>
-        <div class="modal-body">
-          <table align="center" class="table table-striped">
-              <tbody id="infotable">
-              </tbody>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-
-</div>    
-</body>
+  <head>
+    <meta charset="utf-8"/>
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <title>Firebase example</title>
+  </head>
+  <body>
+    <h1>Firebase example</h1>
+    <pre id='data'></pre>
+    <script src="script.js"></script>
+  </body>
 </html>
