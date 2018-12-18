@@ -59,6 +59,11 @@ function getCurrentConfig(embedcode,api_key,api_secret,expires){
           embed["stream_urls"]["iphone"]=json.stream_urls.iphone;
           embed["stream_urls"]["flash"]=json.stream_urls.flash;
           embed["stream_urls"]["smooth"]=json.stream_urls.smooth;
+	  embed["movie_urls"] = {};
+          embed["movie_urls"]["hls"]=json.movie_urls.hls;
+          embed["movie_urls"]["smooth"]=json.movie_urls.smooth;
+          embed["movie_urls"]["mp4"]=json.movie_urls.mp4;
+          embed["movie_urls"]["dash"]=json.movie_urls.dash;
           embed["description"]=json.description;
         	
           configured_embedcodes["assets"].push(embed);
@@ -216,10 +221,14 @@ function infoclick(embedcode){
   html += '<tr><td><p class="text-left">embedcode</p></td><td>'+json.embed_code+'</td>'+
     '<tr><td><p class="text-left">Title</p></td><td>'+json.name+'</td>'+
     '<tr><td><p class="text-left">Description</p></td><td>'+json.description+'</td>'+
-    '<tr><td><p class="text-left">ipad url</p></td><td>'+json.stream_urls.ipad+'</td>'+
-    '<tr><td><p class="text-left">iphone url</p></td><td>'+json.stream_urls.iphone+'</td>'+
-    '<tr><td><p class="text-left">flash url</p></td><td>'+json.stream_urls.flash+'</td>'+
-    '<tr><td><p class="text-left">smooth url</p></td><td>'+json.stream_urls.smooth+'</td>'+
+    '<tr><td><p class="text-left">(Stream) ipad url</p></td><td>'+json.stream_urls.ipad+'</td>'+
+    '<tr><td><p class="text-left">(Stream) iphone url</p></td><td>'+json.stream_urls.iphone+'</td>'+
+    '<tr><td><p class="text-left">(Stream) flash url</p></td><td>'+json.stream_urls.flash+'</td>'+
+    '<tr><td><p class="text-left">(Stream) smooth url</p></td><td>'+json.stream_urls.smooth+'</td>'+
+    '<tr><td><p class="text-left">(Movie) HLS url</p></td><td>'+json.movie_urls.hls+'</td>'+
+    '<tr><td><p class="text-left">(Movie) Dash url</p></td><td>'+json.movie_urls.dash+'</td>'+
+    '<tr><td><p class="text-left">(Movie) Smooth url</p></td><td>'+json.movie_urls.smooth+'</td>'+
+    '<tr><td><p class="text-left">(Movie) Mp4 url</p></td><td>'+json.movie_urls.mp4+'</td>'+
   '</tr>';
 
   $('#infotable').html(html);
