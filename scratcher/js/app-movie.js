@@ -54,18 +54,20 @@ function getCurrentConfig(embedcode,api_key,api_secret,expires){
           var json = JSON.parse(data);
           console.log(data);
           embed["embed_code"]= json.embed_code;
-	  log(json.stream_urls);
+	  if (json.stream_urls){
           embed["stream_urls"] = {};
           embed["stream_urls"]["ipad"]=json.stream_urls.ipad;
           embed["stream_urls"]["iphone"]=json.stream_urls.iphone;
           embed["stream_urls"]["flash"]=json.stream_urls.flash;
           embed["stream_urls"]["smooth"]=json.stream_urls.smooth;
-	  log(json.movie_urls);
+	  }
+	  if(json.movie_urls){
 	  embed["movie_urls"] = {};
           embed["movie_urls"]["hls"]=json.movie_urls.hls;
           embed["movie_urls"]["smooth"]=json.movie_urls.smooth;
           embed["movie_urls"]["mp4"]=json.movie_urls.mp4;
           embed["movie_urls"]["dash"]=json.movie_urls.dash;
+	  }
           embed["description"]=json.description;
         	
           configured_embedcodes["assets"].push(embed);
