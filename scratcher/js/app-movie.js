@@ -222,17 +222,26 @@ function infoclick(embedcode){
           $("#modalheader").text("Stream URL info");        // initializes and invokes show immediately
           var html;
           var s = searchEmbedCode(embedcode,config.assets)
-  html += '<tr><td><p class="text-left">embedcode</p></td><td>'+json.embed_code+'</td>'+
-    '<tr><td><p class="text-left">Title</p></td><td>'+json.name+'</td>'+
-    '<tr><td><p class="text-left">Description</p></td><td>'+json.description+'</td>'+
-    '<tr><td><p class="text-left">(Stream) ipad url</p></td><td>'+json.stream_urls.ipad+'</td>'+
+
+		
+ var stream_urls='';
+ var movie_urls='';
+		
+  if (json.stream_urls){
+	   stream_urls += '<tr><td><p class="text-left">(Stream) ipad url</p></td><td>'+json.stream_urls.ipad+'</td>'+
     '<tr><td><p class="text-left">(Stream) iphone url</p></td><td>'+json.stream_urls.iphone+'</td>'+
     '<tr><td><p class="text-left">(Stream) flash url</p></td><td>'+json.stream_urls.flash+'</td>'+
-    '<tr><td><p class="text-left">(Stream) smooth url</p></td><td>'+json.stream_urls.smooth+'</td>'+
-    '<tr><td><p class="text-left">(Movie) HLS url</p></td><td>'+json.movie_urls.hls+'</td>'+
+    '<tr><td><p class="text-left">(Stream) smooth url</p></td><td>'+json.stream_urls.smooth+'</td>';
+  }
+  if (json.movie_urls){
+  	movie_urls+= '<tr><td><p class="text-left">(Movie) HLS url</p></td><td>'+json.movie_urls.hls+'</td>'+
     '<tr><td><p class="text-left">(Movie) Dash url</p></td><td>'+json.movie_urls.dash+'</td>'+
     '<tr><td><p class="text-left">(Movie) Smooth url</p></td><td>'+json.movie_urls.smooth+'</td>'+
-    '<tr><td><p class="text-left">(Movie) Mp4 url</p></td><td>'+json.movie_urls.mp4+'</td>'+
+    '<tr><td><p class="text-left">(Movie) Mp4 url</p></td><td>'+json.movie_urls.mp4+'</td>';
+  }
+  html += '<tr><td><p class="text-left">embedcode</p></td><td>'+json.embed_code+'</td>'+
+    '<tr><td><p class="text-left">Title</p></td><td>'+json.name+'</td>'+
+    '<tr><td><p class="text-left">Description</p></td><td>'+json.description+'</td>'+ stream_urls + movie_urls+
   '</tr>';
 
   $('#infotable').html(html);
