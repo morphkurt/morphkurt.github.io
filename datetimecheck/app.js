@@ -1,4 +1,4 @@
-function lt(var val1, var val2){
+function lt(val1,val2){
   if (val1 <= val2){
     return true;
   }
