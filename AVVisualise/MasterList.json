@@ -10,7 +10,7 @@
     "connectionType": "NA",
     "instrument": "NA",
     "instrumentShortName": "NA",
-    "condition": "NA",
+    "condition": "NOK",
     "surfaceColor": "",
     "Comments": ""
   },
@@ -69,7 +69,7 @@
     "stageLongName": "NA",
     "connectionType": "NA",
     "instrument": "NA",
-    "instrumentShortName": "NA",
+    "instrumentShortName": "AVAIL",
     "condition": "OK",
     "surfaceColor": "",
     "Comments": ""
@@ -84,7 +84,7 @@
     "stageLongName": "Front Left",
     "connectionType": "mic",
     "instrument": "NA",
-    "instrumentShortName": "NA",
+    "instrumentShortName": "AVAIL",
     "condition": "OK",
     "surfaceColor": "",
     "Comments": ""
@@ -99,7 +99,7 @@
     "stageLongName": "Front Left",
     "connectionType": "mic",
     "instrument": "NA",
-    "instrumentShortName": "NA",
+    "instrumentShortName": "AVAIL",
     "condition": "OK",
     "surfaceColor": "",
     "Comments": ""
@@ -115,7 +115,7 @@
     "connectionType": "NA",
     "instrument": "NA",
     "instrumentShortName": "NA",
-    "condition": "NA",
+    "condition": "NOK",
     "surfaceColor": "",
     "Comments": ""
   },
@@ -201,10 +201,10 @@
     "stageInputType": "Input",
     "stageBox": "FR",
     "stageInput": 4,
-    "stageLongName": "Front Left",
+    "stageLongName": "Front Right",
     "connectionType": "mic",
     "instrument": "NA",
-    "instrumentShortName": "NA",
+    "instrumentShortName": "AVAIL",
     "condition": "OK",
     "surfaceColor": "",
     "Comments": ""
@@ -216,10 +216,10 @@
     "stageInputType": "Input",
     "stageBox": "FR",
     "stageInput": 5,
-    "stageLongName": "Front Left",
+    "stageLongName": "Front Right",
     "connectionType": "mic",
     "instrument": "NA",
-    "instrumentShortName": "NA",
+    "instrumentShortName": "AVAIL",
     "condition": "OK",
     "surfaceColor": "",
     "Comments": ""
@@ -291,7 +291,7 @@
     "stageInputType": "Input",
     "stageBox": "FR",
     "stageInput": 3,
-    "stageLongName": "Front Left",
+    "stageLongName": "Front Right",
     "connectionType": "Input",
     "instrument": "Vox 5",
     "instrumentShortName": "Vox5",
@@ -354,7 +354,7 @@
     "stageLongName": "Middle",
     "connectionType": "mic",
     "instrument": "NA",
-    "instrumentShortName": "NA",
+    "instrumentShortName": "AVAIL",
     "condition": "OK",
     "surfaceColor": "",
     "Comments": ""
