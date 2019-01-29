@@ -169,7 +169,7 @@
     "connectedBox": "IDR32",
     "consoleInputType": "Input",
     "stageInputType": "Input",
-    "stageBox": "FL1",
+    "stageBox": "FL",
     "stageInput": 1,
     "stageLongName": "Front Left",
     "connectionType": "mic",
