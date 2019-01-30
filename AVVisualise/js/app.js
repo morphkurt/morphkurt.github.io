@@ -1,10 +1,11 @@
-var w=500;
-var h=800;
+var w=1000;
+var h=1500;
 var col=4;
 var row=4;
 var sb;
 var masterDB;
 var skipArray=[];
+var stageBoxName='';
 
 $( document ).ready(function() {
 
@@ -48,7 +49,7 @@ function convertSheetJson(output){
 }
 
 function drawBox(stageBoxConfig){
-	var r=w/(col*4);
+	var r=w/(col*3.25);
 	console.log(r);
 	var circleArray=[];
 	for (i = 1; i < (col*row)+1; i++) { 
@@ -82,16 +83,29 @@ var svgContainer = d3.select("body").append("svg")
                                      .attr("width", w)
                                      .attr("height", h);
                                     
-
+var margin_top = 50;
 
 var circles=svgContainer.selectAll("g")
                         .data(circleArray)
                        	.enter()
                        	.append("g");
-
+                circles.append("text")
+        				.attr("x", (w / 2))             
+        				.attr("y", (margin_top / 2))
+       					.attr("text-anchor", "middle")  
+        				.style("font-size", "30px") 
+        				.text(stageBoxName.toUpperCase());
+        		circles.append("rect")
+                       .attr("x", function (d,i) { return (i % col)*3*r+0.5*r; })
+                       .attr("y", function (d,i) { return ( 4*r*Math.floor(i/col))+0.5*r; })
+                       .attr("width", 3*r)
+                       .style("stroke","black")
+                       .style( "fill", function (d) {return d.condition=="NOK" ? "red" : "none"})
+                       .style("visibility", function (d,i){ return d.condition==="HIDDEN" ||  skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
+        			   .attr("height", 4*r); 
                 circles.append("circle")
                        .attr("cx", function (d,i) { return (2*r)+(i % col)*3*r; })
-                       .attr("cy", function (d,i) { return ( 4*r*Math.floor(i/col))+(r*3); })
+                       .attr("cy", function (d,i) { return ( 4*r*Math.floor(i/col))+(r*2.5); })
                        .attr("r", function (d) { return d.r; })
                        .style("stroke", "black")
                        //stageInputType
@@ -99,30 +113,22 @@ var circles=svgContainer.selectAll("g")
                        .style("visibility", function (d,i){ return d.condition==="HIDDEN" || skipArray.includes((i+1).toString()) ? "hidden" : "visible";});
                 circles.append("circle")
                        .attr("cx", function (d,i) {return (2*r)+(i % col)*3*r;})
-                       .attr("cy", function (d,i) {return ( 4*r*Math.floor(i/col))+(r*3.5);})
+                       .attr("cy", function (d,i) {return ( 4*r*Math.floor(i/col))+(r*3);})
                        .attr("r", function (d) {return d.r/10;})
                        .style("visibility", function (d,i){ return d.condition==="HIDDEN" || skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
                        .style("fill", function (d){return d.stageInputType=="input" ? "white":"black";});
                 circles.append("circle")
                        .attr("cx", function (d,i) {return (1.5*r)+(i % col)*3*r;})
-                       .attr("cy", function (d,i) {return ( 4*r*Math.floor(i/col))+(r*3);})
+                       .attr("cy", function (d,i) {return ( 4*r*Math.floor(i/col))+(r*2.5);})
                        .attr("r", function (d) {return d.r/10;})
                        .style("visibility", function (d,i){ return d.condition==="HIDDEN" || skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
                        .style("fill", function (d){return d.stageInputType=="input" ? "white":"black";});
 				circles.append("circle")
                        .attr("cx", function (d,i) {return (2.5*r)+(i % col)*3*r;})
-                       .attr("cy", function (d,i) {return ( 4*r*Math.floor(i/col))+(r*3);})
+                       .attr("cy", function (d,i) {return ( 4*r*Math.floor(i/col))+(r*2.5);})
                        .attr("r", function (d) {return d.r/10;})
                        .style("visibility", function (d,i){ return d.condition==="HIDDEN" || skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
                        .style("fill", function (d){return d.stageInputType=="input" ? "white":"black";});
-                circles.append("rect")
-                       .attr("x", function (d,i) { return (i % col)*3*r+0.5*r; })
-                       .attr("y", function (d,i) { return ( 4*r*Math.floor(i/col))+0.5*r; })
-                       .attr("width", 3*r)
-                       .style("stroke","black")
-                       .style("fill", "none")
-                       .style("visibility", function (d,i){ return d.condition==="HIDDEN" ||  skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
-        			   .attr("height", 4*r); 
         		circles.append("text")
         		       .attr("x", function (d,i) { return (i % col)*3*r+0.75*r; })
                        .attr("y", function (d,i) { return (4*r*Math.floor(i/col))+1.25*r; })
@@ -139,12 +145,12 @@ var circles=svgContainer.selectAll("g")
                        .text(  function (d) {return d.consoleIO;})
                        //.style("stroke","black");
                 circles.append("text")
-        		       .attr("x", function (d,i) { return (i % col)*3*r+1.20*r; })
-                       .attr("y", function (d,i) { return (4*r*Math.floor(i/col))+1.75*r; })
+        		       .attr("x", function (d,i) { return (i % col)*3*r+0.75*r; })
+                       .attr("y", function (d,i) { return (4*r*Math.floor(i/col))+4.25*r; })
                        .style("visibility", function (d,i){ return d.condition==="HIDDEN" || skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
         			   //.attr("dy", "-.35em")
                        .text(  function (d) {return d.condition==="NOK" ? "FLTY" : d.instrumentShortName})
-                       .style( "fill", function (d) {return d.condition=="NOK" ? "red" : "black"})
+                       .style( "fill", "black")
                        .style("font-size","17px");
                        //.style("stroke","black");
                
@@ -201,6 +207,7 @@ function getStageBoxConfig(sb){
 
 		if (masterDB[i].stageBox==sb){
 			var circle=[];
+			stageBoxName=masterDB[i].stageLongName;
 			circle["consoleIO"]=masterDB[i].consoleIO;
 			circle["connectionType"]=masterDB[i].connectionType;
 			circle["instrumentShortName"]=masterDB[i].instrumentShortName;
