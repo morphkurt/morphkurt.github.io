@@ -41,7 +41,7 @@ function download(){
       		"Authorization": "Bearer "+ access_token
    		}
 	});
-	$.get("https://www.strava.com/api/v3/activities?include_all_efforts=", {
+	$.get("https://www.strava.com/api/v3/athlete/activities?page=1&per_page=200", {
     },
     function(data, status){
   		console.log(data);
