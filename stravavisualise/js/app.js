@@ -38,10 +38,10 @@ function exchangeToken(code){
 function download(){
 	$.ajaxSetup({
    		headers:{
-      		"Authorization": access_token
+      		"Authorization": "Bearer "+ access_token
    		}
 	});
-	$.get("https://www.strava.com/api/v3/activities", {
+	$.get("https://www.strava.com/api/v3/activities?include_all_efforts=", {
     },
     function(data, status){
   		console.log(data);
