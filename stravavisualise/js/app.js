@@ -1,10 +1,11 @@
 var code;
-var access_token
+var access_token;
 
 $( document ).ready(function() {
 
 	var code=getQuery("code");
 	if (code!=''){
+		$('#authorize').hide();
 		exchangeToken(code);
 	}
 	
@@ -22,17 +23,28 @@ function getQuery (key) {
 */
 
 function exchangeToken(code){
-	$.post("demo_test_post.asp", {
+  $.post("https://www.strava.com/oauth/token", {
     client_id: "30302",
     client_secret: "45071b5a089e0467afa69fb5a7dea89b68166c01",
     code: code
   },
   function(data, status){
-  	if (status==200){
-  		var tokendata=JSON.parse(data);
-  		access_token=tokendata.access_token
+  		access_token=data.access_token;
   		console.log(access_token);
-  	}
-    alert("Data: " + data + "\nStatus: " + status);
+  	
+  });
+}
+
+function download(){
+	$.ajaxSetup({
+   		headers:{
+      		"Authorization": access_token
+   		}
+	});
+	$.get("https://www.strava.com/api/v3/activities", {
+    },
+    function(data, status){
+  		console.log(data);
+  	
   });
 }
