@@ -10,8 +10,7 @@ function pressRemote(){
 
 $( document ).ready(function() {
 
-  $("input[@name='options']").change(function(){
-       pressRemote();
+  $("#option1").click(function(){
+    alert('clicked!');
   });
-
 });
