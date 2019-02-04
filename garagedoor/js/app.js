@@ -8,7 +8,7 @@ function pressRemote(){
 	});
 }
 
-( document ).ready(function() {
+$( document ).ready(function() {
 
   $("input[@name='options']").change(function(){
        pressRemote();
