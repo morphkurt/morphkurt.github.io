@@ -1,5 +1,5 @@
-var=embedCode;
-var=pCode;
+var embedCode="";
+var pCode="";
 
 $( document ).ready(function() {
   embedCode=getName("ec");
