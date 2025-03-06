@@ -179,6 +179,15 @@ function drawBox(stageBoxConfig) {
         .style("fill", "black")
         .style("visibility", (d, i) => d.condition === "HIDDEN" || config.skipArray.includes((i + 1).toString()) ? "hidden" : "visible")
         .text(d => d.condition==="NOK" ? "FLTY" : d.instrumentShortName);
+
+        // Add "Made with love by DG" at the bottom of the SVG
+    svg.append("text")
+    .attr("x", config.width / 2)
+    .attr("y", config.height - 10)
+    .attr("text-anchor", "middle")
+    .style("font-size", "14px")
+    .style("fill", "black")
+    .text("Made with ❤️ by DG");
 }
 
 function getStageBoxConfig(sb) {
