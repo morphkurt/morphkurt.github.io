@@ -97,11 +97,35 @@ function drawBox(stageBoxConfig) {
             .style("visibility", (d, i) => d.condition === "HIDDEN" || config.skipArray.includes((i + 1).toString()) ? "hidden" : "visible");
     });
 
+    [2].forEach(offset => {
+        circles.append("circle")
+            .attr("cx", (d, i) => (offset * r) + (i % config.columns) * 3 * r)
+            .attr("cy", (d, i) => (4 * r * Math.floor(i / config.columns)) + (r * 3))
+            .attr("r", r / 10)
+            .style("fill", d => d.stageInputType === "input" ? "white" : "black")
+            .style("visibility", (d, i) => d.condition === "HIDDEN" || config.skipArray.includes((i + 1).toString()) ? "hidden" : "visible");
+    });
+
     circles.append("text")
         .attr("x", (d, i) => (i % config.columns) * 3 * r + 0.75 * r)
         .attr("y", (d, i) => (4 * r * Math.floor(i / config.columns)) + 1.25 * r)
         .style("fill", "black")
+        .style("visibility", (d, i) => d.condition === "HIDDEN" || config.skipArray.includes((i + 1).toString()) ? "hidden" : "visible")
         .text(d => d.stageInput);
+
+    circles.append("text")
+        .attr("x", (d, i) => (i % config.columns) * 3 * r + 2.75 * r)
+        .attr("y", (d, i) => (4 * r * Math.floor(i / config.columns)) + 1.25 * r)
+        .style("fill", "black")
+        .style("visibility", (d, i) => d.condition === "HIDDEN" || config.skipArray.includes((i + 1).toString()) ? "hidden" : "visible")
+        .text(d => d.consoleIO);
+
+    circles.append("text")
+        .attr("x", (d, i) => (i % config.columns) * 3 * r + 2.75 * r)
+        .attr("y", (d, i) => (4 * r * Math.floor(i / config.columns)) + 4.25 * r)
+        .style("fill", "black")
+        .style("visibility", (d, i) => d.condition === "HIDDEN" || config.skipArray.includes((i + 1).toString()) ? "hidden" : "visible")
+        .text(d => d.condition==="NOK" ? "FLTY" : d.instrumentShortName);
 }
 
 function getStageBoxConfig(sb) {
