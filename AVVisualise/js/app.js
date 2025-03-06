@@ -137,7 +137,7 @@ const config = {
       .attr("text-anchor", "middle")
       .style("font-size", "14px")
       .style("fill", "black")
-      .text("Made with ❤️ by DG");
+      .text("Made with ❤️ by 🔫");
   }
   
   // Generate data for stage box elements
