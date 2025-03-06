@@ -1,226 +1,119 @@
-var w=1000;
-var h=1500;
-var col=4;
-var row=4;
-var sb;
-var masterDB;
-var skipArray=[];
-var stageBoxName='';
+const WIDTH = 1000;
+const HEIGHT = 1500;
+let columns = 4;
+let rows = 4;
+let stageBox;
+let masterDB;
+let skipArray = [];
+let stageBoxName = "";
 
-$( document ).ready(function() {
-
-	loadMasterDB();
-	col=parseInt(getQuery("col"));
-	row=parseInt(getQuery("row"));
-	sb=getQuery("sb");
-	skipArray=getQuery("skip").split(",");
-//	console.log(skipArray.includes("3"));
-	console.log(skipArray);
+document.addEventListener("DOMContentLoaded", () => {
+    loadMasterDB();
+    columns = parseInt(getQueryParam("col")) || columns;
+    rows = parseInt(getQueryParam("row")) || rows;
+    stageBox = getQueryParam("sb");
+    skipArray = getQueryParam("skip").split(",");
+    console.log(skipArray);
 });
 
-function loadMasterDB(){
-	$.ajax({
-        type: "GET",
-        url: "https://sheets.googleapis.com/v4/spreadsheets/1W-wSwHFy2MgoXZ8BOD9EijVwtugpwHK8XHt7xLVMyU0/values/Master?key=AIzaSyDklKd0omHIdwOWr07vFppSXvjZDpf0_kE",
-     //   url: "http://morphkurt.github.io/AVVisualise/MasterList.json?value="+Math.floor(Math.random() * 100000),
-        dataType: "text",
-        success: function(data) { 
-          masterDB = convertSheetJson(JSON.parse(data));
-          console.log(masterDB.values); 
-          console.log(masterDB.length);
-          var stageBoxConfig = getStageBoxConfig(sb);
-          console.log(stageBoxConfig);
-          drawBox(stageBoxConfig);
-     	}
-	});
+function loadMasterDB() {
+    fetch("https://sheets.googleapis.com/v4/spreadsheets/1W-wSwHFy2MgoXZ8BOD9EijVwtugpwHK8XHt7xLVMyU0/values/Master?key=AIzaSyDklKd0omHIdwOWr07vFppSXvjZDpf0_kE")
+        .then(response => response.json())
+        .then(data => {
+            masterDB = convertSheetJson(data);
+            const stageBoxConfig = getStageBoxConfig(stageBox);
+            drawBox(stageBoxConfig);
+        })
+        .catch(error => console.error("Error loading MasterDB:", error));
 }
 
-function convertSheetJson(output){
-		var rows = output.values;
-		var masterDB = [];
-		for (i = 1; i < rows.length; i++) { 
-				var val=[];
-				for (j = 0; j < rows[0].length; j++) { 
-					val[rows[0][j]]=rows[i][j];
-				}		
-				masterDB.push(val);
-		}
-		return masterDB;
+function convertSheetJson(data) {
+    const rows = data.values;
+    return rows.slice(1).map(row => {
+        const entry = {};
+        rows[0].forEach((key, index) => {
+            entry[key] = row[index];
+        });
+        return entry;
+    });
 }
 
-function drawBox(stageBoxConfig){
-	var r=w/(col*3.25);
-	console.log(r);
-	var circleArray=[];
-	for (i = 1; i < (col*row)+1; i++) { 
-		var quotient = Math.floor((i-1)/col);
-		var remainder = (i-1) % col;
-		var circle=[];
-		circle.x=(2*r)+remainder*3*r;
-		circle.y=(3*r*Math.floor((i-1)/col))+(r*2);
-		circle.r=r;
-		circle.stageInput=i;
-		circle["condition"]="HIDDEN";
-		for (j = 0; j < stageBoxConfig.length; j++){
-			if (stageBoxConfig[j].stageInput==i){
-				circle["consoleIO"]=stageBoxConfig[j].consoleIO;
-				circle["connectionType"]=stageBoxConfig[j].connectionType;
-				circle["instrumentShortName"]=stageBoxConfig[j].instrumentShortName.toUpperCase();
-				circle["stageInput"]=stageBoxConfig[j].stageInput;
-				circle["color"]=stageBoxConfig[j].color;
-				circle["condition"]=stageBoxConfig[j].condition;
-				circle["stageInputType"]=stageBoxConfig[j].stageInputType.toLowerCase();
-			}
-		}
-			//circle["stageInput"]=stageBoxConfig[j].stageInput;
-			
+function drawBox(stageBoxConfig) {
+    const radius = WIDTH / (columns * 3.25);
+    const circleArray = Array.from({ length: columns * rows }, (_, i) => {
+        const quotient = Math.floor(i / columns);
+        const remainder = i % columns;
 
+        let circle = {
+            x: (2 * radius) + remainder * 3 * radius,
+            y: (3 * radius * quotient) + (radius * 2),
+            r: radius,
+            stageInput: i + 1,
+            condition: "HIDDEN",
+        };
 
-		circleArray.push(circle);
-	}
-console.log(circleArray);
-var svgContainer = d3.select("body").append("svg")
-                                     .attr("width", w)
-                                     .attr("height", h);
-                                    
-var margin_top = 50;
+        const config = stageBoxConfig.find(item => item.stageInput == circle.stageInput);
+        if (config) {
+            Object.assign(circle, config, {
+                instrumentShortName: config.instrumentShortName.toUpperCase(),
+                stageInputType: config.stageInputType.toLowerCase(),
+            });
+        }
+        return circle;
+    });
 
-var circles=svgContainer.selectAll("g")
-                        .data(circleArray)
-                       	.enter()
-                       	.append("g");
-                circles.append("text")
-        				.attr("x", (w / 2))             
-        				.attr("y", (margin_top / 2))
-       					.attr("text-anchor", "middle")  
-        				.style("font-size", "30px") 
-        				.text(stageBoxName.toUpperCase());
-        		circles.append("rect")
-                       .attr("x", function (d,i) { return (i % col)*3*r+0.5*r; })
-                       .attr("y", function (d,i) { return ( 4*r*Math.floor(i/col))+0.5*r; })
-                       .attr("width", 3*r)
-                       .style("stroke","black")
-                       .style( "fill", function (d) {return d.condition=="NOK" ? "red" : "none"})
-                       .style("visibility", function (d,i){ return d.condition==="HIDDEN" ||  skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
-        			   .attr("height", 4*r); 
-                circles.append("circle")
-                       .attr("cx", function (d,i) { return (2*r)+(i % col)*3*r; })
-                       .attr("cy", function (d,i) { return ( 4*r*Math.floor(i/col))+(r*2.5); })
-                       .attr("r", function (d) { return d.r; })
-                       .style("stroke", "black")
-                       //stageInputType
-                       .style("fill", function (d){return d.stageInputType=="input" ? "black":"none";})
-                       .style("visibility", function (d,i){ return d.condition==="HIDDEN" || skipArray.includes((i+1).toString()) ? "hidden" : "visible";});
-                circles.append("circle")
-                       .attr("cx", function (d,i) {return (2*r)+(i % col)*3*r;})
-                       .attr("cy", function (d,i) {return ( 4*r*Math.floor(i/col))+(r*3);})
-                       .attr("r", function (d) {return d.r/10;})
-                       .style("visibility", function (d,i){ return d.condition==="HIDDEN" || skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
-                       .style("fill", function (d){return d.stageInputType=="input" ? "white":"black";});
-                circles.append("circle")
-                       .attr("cx", function (d,i) {return (1.5*r)+(i % col)*3*r;})
-                       .attr("cy", function (d,i) {return ( 4*r*Math.floor(i/col))+(r*2.5);})
-                       .attr("r", function (d) {return d.r/10;})
-                       .style("visibility", function (d,i){ return d.condition==="HIDDEN" || skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
-                       .style("fill", function (d){return d.stageInputType=="input" ? "white":"black";});
-				circles.append("circle")
-                       .attr("cx", function (d,i) {return (2.5*r)+(i % col)*3*r;})
-                       .attr("cy", function (d,i) {return ( 4*r*Math.floor(i/col))+(r*2.5);})
-                       .attr("r", function (d) {return d.r/10;})
-                       .style("visibility", function (d,i){ return d.condition==="HIDDEN" || skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
-                       .style("fill", function (d){return d.stageInputType=="input" ? "white":"black";});
-        		circles.append("text")
-        		       .attr("x", function (d,i) { return (i % col)*3*r+0.75*r; })
-                       .attr("y", function (d,i) { return (4*r*Math.floor(i/col))+1.25*r; })
-        			   .attr("dy", "-.35em")
-        			   .style("visibility", function (d,i){ return d.condition==="HIDDEN" ||  skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
-                       .text( function (d) {return d.stageInput;})
-                       //.style("stroke","black")
-                       .style("fill", "black");
-        		circles.append("text")
-        		       .attr("x", function (d,i) { return (i % col)*3*r+2.75*r; })
-                       .attr("y", function (d,i) { return (4*r*Math.floor(i/col))+1.25*r; })
-        			   .attr("dy", "-.35em")
-        			   .style("visibility", function (d,i){ return d.condition==="HIDDEN" ||  skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
-                       .text(  function (d) {return d.consoleIO;})
-                       //.style("stroke","black");
-                circles.append("text")
-        		       .attr("x", function (d,i) { return (i % col)*3*r+0.75*r; })
-                       .attr("y", function (d,i) { return (4*r*Math.floor(i/col))+4.25*r; })
-                       .style("visibility", function (d,i){ return d.condition==="HIDDEN" || skipArray.includes((i+1).toString()) ? "hidden" : "visible";})
-        			   //.attr("dy", "-.35em")
-                       .text(  function (d) {return d.condition==="NOK" ? "FLTY" : d.instrumentShortName})
-                       .style( "fill", "black")
-                       .style("font-size","17px");
-                       //.style("stroke","black");
-               
+    console.log(circleArray);
 
+    const svgContainer = d3.select("body").append("svg")
+        .attr("width", WIDTH)
+        .attr("height", HEIGHT);
 
+    const circles = svgContainer.selectAll("g")
+        .data(circleArray)
+        .enter()
+        .append("g");
 
-/*
-var r2=r/2;
+    circles.append("text")
+        .attr("x", WIDTH / 2)
+        .attr("y", 25)
+        .attr("text-anchor", "middle")
+        .style("font-size", "30px")
+        .text(stageBoxName.toUpperCase());
 
-var circleAttributes = circles
-                       .attr("cx", function (d,i) { return (2*r2)+(i % col)*3*r2; })
-                       .attr("cy", function (d,i) { return ( 3*r2*Math.floor(i/col))+(r2*2); })
-                       .attr("r", function (d) { return d.r; })
-                       .style("fill", function(d) { return d.color; });
-*/
+    circles.append("rect")
+        .attr("x", (d, i) => (i % columns) * 3 * radius + 0.5 * radius)
+        .attr("y", (d, i) => (4 * radius * Math.floor(i / columns)) + 0.5 * radius)
+        .attr("width", 3 * radius)
+        .attr("height", 4 * radius)
+        .style("stroke", "black")
+        .style("fill", d => (d.condition === "NOK" ? "red" : "none"))
+        .style("visibility", (d, i) => d.condition === "HIDDEN" || skipArray.includes((i + 1).toString()) ? "hidden" : "visible");
 
-//Add the SVG Text Element to the svgContainer
-/*
-var text = svgContainer.selectAll("text")
-                        .data(circleArray)
-                        .enter()
-                        .append("text");
-
-var textLabels = text
-                 .attr("x", function(d) { return d.x; })
-                 .attr("y", function(d) { return d.y; })
-                 .text( function (d) { return d.consoleIO;})
-                 .attr("font-family", "sans-serif")
-                 .attr("font-size", "10px")
-                 .attr("fill", "black");
-*/
+    circles.append("circle")
+        .attr("cx", (d, i) => (2 * radius) + (i % columns) * 3 * radius)
+        .attr("cy", (d, i) => (4 * radius * Math.floor(i / columns)) + (radius * 2.5))
+        .attr("r", d => d.r)
+        .style("stroke", "black")
+        .style("fill", d => (d.stageInputType === "input" ? "black" : "none"))
+        .style("visibility", (d, i) => d.condition === "HIDDEN" || skipArray.includes((i + 1).toString()) ? "hidden" : "visible");
 }
 
-function getStageBoxConfig(sb){
-	var j=0;
-	var config=[];
-	for (i = 0; i < masterDB.length; i++) { 
-		console.log(masterDB[i].stageBox);
-/*
-	 "consoleIO": 2,
-    "connectedBox": "IDR32",
-    "consoleInputType": "Input",
-    "stageInputType": "Input",
-    "stageBox": "FL",
-    "stageInput": 2,
-    "stageLongName": "Front Left",
-    "connectionType": "mic",
-    "instrument": "Vox 2",
-    "instrumentShortName": "Vox2",
-    "condition": "OK",
-    "surfaceColor": "green",
-    "Comments": ""
-*/
-
-		if (masterDB[i].stageBox==sb){
-			var circle=[];
-			stageBoxName=masterDB[i].stageLongName;
-			circle["consoleIO"]=masterDB[i].consoleIO;
-			circle["connectionType"]=masterDB[i].connectionType;
-			circle["instrumentShortName"]=masterDB[i].instrumentShortName;
-			circle["stageInput"]=masterDB[i].stageInput;
-			circle["color"]=masterDB[i].surfaceColor;
-			circle["condition"]=masterDB[i].condition;
-			circle["stageInputType"]=masterDB[i].stageInputType;
-			config.push(circle);
-		}
-	}
-	return config;
+function getStageBoxConfig(sb) {
+    return masterDB.filter(item => item.stageBox === sb).map(item => {
+        stageBoxName = item.stageLongName;
+        return {
+            consoleIO: item.consoleIO,
+            connectionType: item.connectionType,
+            instrumentShortName: item.instrumentShortName,
+            stageInput: item.stageInput,
+            color: item.surfaceColor,
+            condition: item.condition,
+            stageInputType: item.stageInputType,
+        };
+    });
 }
 
-function getQuery (key) {  
-  return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
-}  
+function getQueryParam(key) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(key) || "";
+}
