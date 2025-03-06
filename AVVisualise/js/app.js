@@ -1,6 +1,6 @@
 const config = {
     width: 1000,
-    height: 1500,
+    height: 700,
     columns: 4,
     rows: 4,
     stageBox: '',
@@ -14,6 +14,59 @@ document.addEventListener("DOMContentLoaded", () => {
     config.rows = parseInt(getQuery("row")) || config.rows;
     config.stageBox = getQuery("sb");
     config.skipArray = getQuery("skip").split(",") || [];
+
+    function downloadSVGAsPNG() {
+        const svgElement = document.querySelector("svg");
+        if (!svgElement) {
+            console.error("SVG element not found.");
+            return;
+        }
+
+        const serializer = new XMLSerializer();
+        const svgString = serializer.serializeToString(svgElement);
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        const img = new Image();
+
+        const svgWidth = parseInt(svgElement.getAttribute("width")) || 500;
+        const svgHeight = parseInt(svgElement.getAttribute("height")) || 500;
+
+        canvas.width = svgWidth;
+        canvas.height = svgHeight;
+
+        const svgBlob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+        const url = URL.createObjectURL(svgBlob);
+
+        img.onload = function () {
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw a white background
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+            URL.revokeObjectURL(url);
+
+            const pngUrl = canvas.toDataURL("image/png");
+            const downloadLink = document.createElement("a");
+            downloadLink.href = pngUrl;
+            downloadLink.download = config.stageBox + ".png";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        };
+
+        img.src = url;
+    }
+
+    // Create and add the download button
+    const downloadButton = document.createElement("button");
+    downloadButton.innerText = "Download as PNG";
+    downloadButton.style.display = "block";
+    downloadButton.style.margin = "10px";
+    downloadButton.onclick = downloadSVGAsPNG;
+
+    document.body.appendChild(downloadButton);
 });
 
 function loadMasterDB() {
