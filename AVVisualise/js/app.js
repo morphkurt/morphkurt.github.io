@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function loadMasterDB() {
-    fetch("https://sheets.googleapis.com/v4/spreadsheets/YOUR_SHEET_ID/values/Master?key=YOUR_API_KEY")
+    fetch("https://sheets.googleapis.com/v4/spreadsheets/1W-wSwHFy2MgoXZ8BOD9EijVwtugpwHK8XHt7xLVMyU0/values/Master?key=AIzaSyDklKd0omHIdwOWr07vFppSXvjZDpf0_kE")
         .then(response => response.json())
         .then(data => {
             config.masterDB = convertSheetJson(data);
